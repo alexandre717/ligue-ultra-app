@@ -1,0 +1,293 @@
+.admin-invite-section {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  border: 1px solid #e0e0e0;
+}
+
+.admin-invite-section h2 {
+  font-size: 18px;
+  margin: 0 0 16px;
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+.admin-invite-section h3 {
+  font-size: 14px;
+  margin: 0 0 12px;
+  color: #333;
+  font-weight: 600;
+}
+
+.invite-form-group {
+  margin-bottom: 16px;
+}
+
+.invite-form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.invite-form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  resize: vertical;
+  transition: all 0.2s;
+  color: #333;
+}
+
+.invite-form-group textarea:focus {
+  outline: none;
+  border-color: #00A651;
+  box-shadow: 0 0 0 3px rgba(0, 166, 81, 0.1);
+}
+
+.invite-form-group textarea:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.invite-form-group .hint {
+  font-size: 11px;
+  color: #999;
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+.btn-primary {
+  background: #00A651;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #008a3d;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 166, 81, 0.3);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sent-feedback {
+  margin-top: 20px;
+  padding: 16px;
+  background: #f0faf5;
+  border-radius: 8px;
+  border-left: 4px solid #00A651;
+}
+
+.sent-feedback h3 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.sent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.invite-result {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: white;
+  border-radius: 6px;
+  font-size: 12px;
+  border-left: 3px solid #e0e0e0;
+  flex-wrap: wrap;
+}
+
+.invite-result.invited {
+  border-left-color: #00A651;
+}
+
+.invite-result.warning {
+  border-left-color: #ff9800;
+}
+
+.invite-result.error {
+  border-left-color: #d32f2f;
+}
+
+.invite-result .email {
+  font-weight: 600;
+  flex: 1;
+  min-width: 120px;
+  word-break: break-all;
+}
+
+.invite-result .status {
+  font-size: 11px;
+  color: #999;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.invite-result .status.warning {
+  color: #ff9800;
+}
+
+.invite-result .status.error {
+  color: #d32f2f;
+}
+
+.btn-copy {
+  background: white;
+  border: 1px solid #e0e0e0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.btn-copy:hover {
+  border-color: #00A651;
+  color: #00A651;
+  background: #f0faf5;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.invitations-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 0;
+}
+
+.invitations-table th {
+  background: #f5f5f5;
+  padding: 10px 8px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #e0e0e0;
+  color: #333;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.invitations-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: middle;
+}
+
+.invitations-table tbody tr:hover {
+  background: #f9f9f9;
+}
+
+.invitations-table .email-cell {
+  font-weight: 500;
+  word-break: break-all;
+  max-width: 180px;
+}
+
+.invitations-table .status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.invitations-table .status-badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.invitations-table .status-badge.used {
+  background: #d4edda;
+  color: #155724;
+}
+
+.invitations-table .status-badge.expired {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.invitations-table .date {
+  color: #999;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.btn-small {
+  background: white;
+  border: 1px solid #e0e0e0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.btn-small:hover {
+  border-color: #00A651;
+  color: #00A651;
+  background: #f0faf5;
+}
+
+.user-link {
+  font-size: 11px;
+  color: #00A651;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .admin-invite-section {
+    padding: 16px;
+  }
+
+  .invite-result {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .invite-result .email {
+    width: 100%;
+  }
+
+  .invitations-table {
+    font-size: 11px;
+  }
+
+  .invitations-table th,
+  .invitations-table td {
+    padding: 8px 4px;
+  }
+
+  .invitations-table .email-cell {
+    max-width: 120px;
+  }
+}
