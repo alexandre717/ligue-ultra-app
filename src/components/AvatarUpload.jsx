@@ -10,6 +10,7 @@ export default function AvatarUpload({ onUpload }) {
   const fileInputRef = useRef(null);
   const libraryInputRef = useRef(null);
 
+  // eslint-disable-next-line no-unused-vars
   const isMobile = () => {
     return /iPhone|iPad|Android|webOS|BlackBerry|Windows Phone/i.test(navigator.userAgent);
   };
