@@ -19,10 +19,11 @@ function InviteWrapper() {
 // ============================================================
 function MainApp() {
   // eslint-disable-next-line no-unused-vars
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
-  // eslint-disable-next-line no-unused-varsconst [activeTab, setActiveTab] = useState('annuaire');
+  const [activeTab, setActiveTab] = useState('annuaire');
+  // eslint-disable-next-line no-unused-vars
   const [members, setMembers] = useState([
     { id: 1, name: 'Sophie Martin', avatar: '🏃‍♀️', level: 'Elite', distance: 856 },
     { id: 2, name: 'Jean Dupont', avatar: '🚴', level: 'Elite+', distance: 1025 },
@@ -67,7 +68,9 @@ function MainApp() {
           <button
             className="btn-login"
             onClick={() => {
-              // eslint-disable-next-line no-unused-varsconst email = document.getElementById('email').value;
+              // eslint-disable-next-line no-unused-vars
+              const email = document.getElementById('email').value;
+              // eslint-disable-next-line no-unused-vars
               const password = document.getElementById('password').value;
               console.log('Login:', email);
             }}
