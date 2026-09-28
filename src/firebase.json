@@ -1,0 +1,11 @@
+cat > firebase.json << 'EOF'
+{
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "runtime": "nodejs24"
+    }
+  ]
+}
+EOF

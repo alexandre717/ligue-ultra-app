@@ -1,0 +1,11 @@
+{
+  "remoteName": "origin",
+  "projects": [
+    {
+      "id": "prj_F8lrXndnlA0ArTvrbKyhtdRaGBVA",
+      "name": "ligueultra-app",
+      "directory": ".",
+      "orgId": "team_Q09qNiNFK3eILo4ndVTzdJMQ"
+    }
+  ]
+}
