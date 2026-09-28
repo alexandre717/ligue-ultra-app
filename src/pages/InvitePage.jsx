@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-// import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { httpsCallable } from 'firebase/functions';
@@ -8,6 +8,7 @@ import AvatarUpload from '../components/AvatarUpload';
 import './InvitePage.css';
 
 export default function InvitePage({ token }) {
+  // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate();
   const [isValid, setIsValid] = useState(false);
   const [email, setEmail] = useState('');
@@ -66,8 +67,8 @@ export default function InvitePage({ token }) {
     setLoading(true);
     try {
       const claimInvitation = httpsCallable(functions, 'claimInvitation');
-      const // eslint-disable-next-line no-unused-vars
-      // result = await claimInvitation({
+      // eslint-disable-next-line no-unused-vars
+      const result = await claimInvitation({
         token,
         firstName: form.firstName,
         lastName: form.lastName,
