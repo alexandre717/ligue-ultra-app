@@ -1,4 +1,5 @@
-import { useParams, useNavigate } from 'react-router-dom';
+// eslint-disable-next-line no-unused-vars
+// import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { httpsCallable } from 'firebase/functions';
@@ -65,7 +66,8 @@ export default function InvitePage({ token }) {
     setLoading(true);
     try {
       const claimInvitation = httpsCallable(functions, 'claimInvitation');
-      const result = await claimInvitation({
+      const // eslint-disable-next-line no-unused-vars
+      // result = await claimInvitation({
         token,
         firstName: form.firstName,
         lastName: form.lastName,
