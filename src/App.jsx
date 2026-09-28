@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useParams } from 'react-router-dom';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase-config';
 import InvitePage from './pages/InvitePage';
 import AdminInviteSection from './components/AdminInviteSection';
@@ -18,13 +18,12 @@ function InviteWrapper() {
 // Composant Principal (annuaire + événements)
 // ============================================================
 function MainApp() {
-  // eslint-disable-next-line no-unused-vars
-  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [activeTab, setActiveTab] = useState('annuaire');
-  // eslint-disable-next-line no-unused-vars
-  const [members, setMembers] = useState([
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [members] = useState([
     { id: 1, name: 'Sophie Martin', avatar: '🏃‍♀️', level: 'Elite', distance: 856 },
     { id: 2, name: 'Jean Dupont', avatar: '🚴', level: 'Elite+', distance: 1025 },
     { id: 3, name: 'Marie Leclerc', avatar: '⛹️‍♀️', level: 'Pro', distance: 743 },
@@ -45,6 +44,32 @@ function MainApp() {
     });
     return () => unsubscribe();
   }, []);
+
+  // ============================================================
+  // LOGIN FIREBASE
+  // ============================================================
+  const handleLogin = async () => {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    if (!email || !password) {
+      setErrorMessage('Veuillez remplir email et mot de passe');
+      return;
+    }
+
+    setLoading(true);
+    setErrorMessage('');
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      // Firebase auto-déclenche onAuthStateChanged, pas besoin de setUser ici
+    } catch (error) {
+      console.error('Login error:', error);
+      setErrorMessage(`Erreur : ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleLogout = async () => {
     try {
@@ -67,17 +92,13 @@ function MainApp() {
           <input type="password" placeholder="Mot de passe" className="login-input" id="password" />
           <button
             className="btn-login"
-            onClick={() => {
-              // eslint-disable-next-line no-unused-vars
-              const email = document.getElementById('email').value;
-              // eslint-disable-next-line no-unused-vars
-              const password = document.getElementById('password').value;
-              console.log('Login:', email);
-            }}
+            onClick={handleLogin}
+            disabled={loading}
           >
-            Connexion
+            {loading ? 'Connexion...' : 'Connexion'}
           </button>
-          <p className="login-hint">Démo : member@mail.fr / admin@ligueultra.fr</p>
+          {errorMessage && <p className="login-error">{errorMessage}</p>}
+          <p className="login-hint">Démo : member@mail.fr ou admin@ligueultra.fr</p>
         </div>
       </div>
     );
