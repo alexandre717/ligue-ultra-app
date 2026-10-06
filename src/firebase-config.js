@@ -5,7 +5,7 @@ import { getStorage } from 'firebase/storage';
 import { getFunctions } from 'firebase/functions';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC4deo_uzyEY68uI_ivWB1A0NUjFBbp7cY",
+  apiKey: "AIzaSyAjdN-Fg_gf8WzaA5Ui08A0DWV3iJYyhcc",
   authDomain: "le-club-ligue-ultra.firebaseapp.com",
   projectId: "le-club-ligue-ultra",
   storageBucket: "le-club-ligue-ultra.firebasestorage.app",
