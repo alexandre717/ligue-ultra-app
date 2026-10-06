@@ -4,6 +4,7 @@ import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from 'firebas
 import { auth } from './firebase-config';
 import InvitePage from './pages/InvitePage';
 import AdminInviteSection from './components/AdminInviteSection';
+import Agenda from './components/Agenda';
 import './App.css';
 
 // ============================================================
@@ -161,12 +162,7 @@ function MainApp() {
           </div>
         )}
 
-        {activeTab === 'agenda' && (
-          <div className="agenda-section">
-            <h2>Événements Ligue Ultra</h2>
-            <p>Prochaines courses à venir...</p>
-          </div>
-        )}
+        {activeTab === 'agenda' && <Agenda />}
 
         {activeTab === 'admin' && isAdmin && (
           <div className="admin-section">
