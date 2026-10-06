@@ -105,6 +105,20 @@ export default function Agenda() {
               </div>
             )}
 
+            {event.lat && event.lng && (
+              <div className="event-map">
+                <iframe
+                  width="100%"
+                  height="250"
+                  style={{ border: 0, borderRadius: '8px' }}
+                  loading="lazy"
+                  allowFullScreen=""
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAjdN-Fg_gf8WzaA5Ui08A0DWV3iJYyhcc&q=${event.lat},${event.lng}&zoom=15`}
+                ></iframe>
+              </div>
+            )}
+
             {event.googleMapsUrl && (
               <a
                 href={event.googleMapsUrl}
@@ -112,7 +126,7 @@ export default function Agenda() {
                 rel="noopener noreferrer"
                 className="maps-link"
               >
-                🗺️ Voir sur Google Maps
+                🗺️ Ouvrir dans Google Maps
               </a>
             )}
           </div>
