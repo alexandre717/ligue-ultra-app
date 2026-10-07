@@ -190,6 +190,76 @@
   font-size: 16px;
 }
 
+.confirmation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.confirmation-dialog {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  text-align: center;
+}
+
+.confirmation-dialog h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.confirmation-dialog p {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn-cancel,
+.btn-confirm-delete {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.btn-cancel {
+  background: #ddd;
+  color: #333;
+}
+
+.btn-cancel:hover {
+  background: #ccc;
+}
+
+.btn-confirm-delete {
+  background: #f44336;
+  color: white;
+}
+
+.btn-confirm-delete:hover {
+  background: #d32f2f;
+}
+
 @media (max-width: 768px) {
   .admin-dashboard {
     padding: 10px;
@@ -212,5 +282,10 @@
 
   .admin-form {
     gap: 10px;
+  }
+
+  .confirmation-dialog {
+    margin: 20px;
+    max-width: none;
   }
 }

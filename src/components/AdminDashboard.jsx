@@ -8,6 +8,7 @@ export default function AdminDashboard() {
   const [events, setEvents] = useState([]);
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(null);
 
   // Form states
   const [eventForm, setEventForm] = useState({
@@ -102,13 +103,13 @@ export default function AdminDashboard() {
   };
 
   const handleDeleteEvent = async (eventId) => {
-    if (confirm('Supprimer cet événement ?')) {
-      try {
-        await deleteDoc(doc(db, 'events', eventId));
-        fetchEvents();
-      } catch (error) {
-        console.error('Error deleting event:', error);
-      }
+    try {
+      await deleteDoc(doc(db, 'events', eventId));
+      fetchEvents();
+      setConfirmDelete(null);
+    } catch (error) {
+      console.error('Error deleting event:', error);
+      setConfirmDelete(null);
     }
   };
 
@@ -150,13 +151,13 @@ export default function AdminDashboard() {
   };
 
   const handleDeleteUser = async (userId) => {
-    if (confirm('Supprimer cet utilisateur ?')) {
-      try {
-        await deleteDoc(doc(db, 'users', userId));
-        fetchUsers();
-      } catch (error) {
-        console.error('Error deleting user:', error);
-      }
+    try {
+      await deleteDoc(doc(db, 'users', userId));
+      fetchUsers();
+      setConfirmDelete(null);
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      setConfirmDelete(null);
     }
   };
 
@@ -251,7 +252,7 @@ export default function AdminDashboard() {
                   </div>
                   <button
                     className="delete-btn"
-                    onClick={() => handleDeleteEvent(event.id)}
+                    onClick={() => setConfirmDelete({ type: 'event', id: event.id })}
                   >
                     Supprimer
                   </button>
@@ -314,7 +315,7 @@ export default function AdminDashboard() {
                     )}
                     <button
                       className="delete-btn"
-                      onClick={() => handleDeleteUser(user.uid)}
+                      onClick={() => setConfirmDelete({ type: 'user', id: user.uid })}
                     >
                       Supprimer
                     </button>
@@ -323,6 +324,40 @@ export default function AdminDashboard() {
               ))}
             </div>
           )}
+        </div>
+      )}
+
+      {/* Confirmation Modal */}
+      {confirmDelete && (
+        <div className="confirmation-modal">
+          <div className="confirmation-dialog">
+            <h3>Confirmer la suppression</h3>
+            <p>
+              {confirmDelete.type === 'event'
+                ? 'Êtes-vous sûr de vouloir supprimer cet événement ?'
+                : 'Êtes-vous sûr de vouloir supprimer cet utilisateur ?'}
+            </p>
+            <div className="confirmation-actions">
+              <button
+                className="btn-cancel"
+                onClick={() => setConfirmDelete(null)}
+              >
+                Annuler
+              </button>
+              <button
+                className="btn-confirm-delete"
+                onClick={() => {
+                  if (confirmDelete.type === 'event') {
+                    handleDeleteEvent(confirmDelete.id);
+                  } else {
+                    handleDeleteUser(confirmDelete.id);
+                  }
+                }}
+              >
+                Supprimer
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
