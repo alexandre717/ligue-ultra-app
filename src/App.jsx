@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './firebase-config';
+import { auth, db } from './firebase-config';
+import { doc, getDoc } from 'firebase/firestore';
 import InvitePage from './pages/InvitePage';
 import AdminInviteSection from './components/AdminInviteSection';
+import AdminDashboard from './components/AdminDashboard';
 import Agenda from './components/Agenda';
 import './App.css';
 
@@ -34,10 +36,20 @@ function MainApp() {
   ]);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
-        setIsAdmin(currentUser.email === 'admin@ligueultra.fr');
+
+        // Vérifier le rôle admin dans Firestore
+        try {
+          const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
+          const userData = userDoc.data();
+          setIsAdmin(userData && userData.role === 'admin');
+        } catch (error) {
+          console.error('Error checking admin status:', error);
+          // Fallback: vérifier l'email
+          setIsAdmin(currentUser.email === 'alexandre@outdoor01.fr' || currentUser.email === 'admin@ligueultra.fr');
+        }
       } else {
         setUser(null);
         setIsAdmin(false);
@@ -165,9 +177,7 @@ function MainApp() {
         {activeTab === 'agenda' && <Agenda />}
 
         {activeTab === 'admin' && isAdmin && (
-          <div className="admin-section">
-            <AdminInviteSection />
-          </div>
+          <AdminDashboard />
         )}
       </div>
 
