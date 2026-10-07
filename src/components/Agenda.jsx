@@ -114,7 +114,7 @@ export default function Agenda() {
                   loading="lazy"
                   allowFullScreen=""
                   referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAjdN-Fg_gf8WzaA5Ui08A0DWV3iJYyhcc&q=${event.lat},${event.lng}&zoom=15`}
+                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCPmIgeOhYoNsF9MpUPB6SAkeX8BE2gLGg&q=${event.lat},${event.lng}&zoom=15`}
                 ></iframe>
               </div>
             )}
