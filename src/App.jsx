@@ -42,7 +42,7 @@ function MainApp() {
 
         // Vérifier le rôle admin dans Firestore
         try {
-          const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
+          const userDoc = await getDoc(doc(db, 'users', currentUser.email));
           const userData = userDoc.data();
           setIsAdmin(userData && userData.role === 'admin');
         } catch (error) {
